@@ -1,0 +1,60 @@
+body {
+    padding: 50px;
+}
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+/* ===== 원형 테이블 ===== */
+.table__container {
+    padding: 40px 0;
+    position: relative;
+}
+.table__arrow {
+    position: absolute;
+    top: 220px;
+    left: 180px;
+    font-size: 4rem;
+    color: rgb(216, 68, 68);
+}
+
+/* ===== 입력창 ===== */
+.input__container {
+    position: absolute;
+    top: 580px;
+    width: 900px;
+}
+.container::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.input__box {
+    float: left;
+    width: 450px;
+}
+.input__box > h2 {
+    margin: 10px 0;
+    color: #333;
+}
+.input__txt {
+    display: block;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 300px;
+    height: 35px;
+}
+.input__btn {
+    width: 120px;
+    height: 33px;
+    margin-top: 10px;
+    outline: none;
+    border: 0 none;
+    border-radius: 8px;
+    background-color: rgb(177, 226, 218);
+    color: #333;
+    cursor: pointer;
+}
