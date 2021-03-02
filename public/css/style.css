@@ -27,6 +27,9 @@ body {
     top: 50%;
     transform: translateY(-50%);
 }
+.line > span {
+    color: #ccc;
+}
 .line1 {
     transform: rotate(112.5deg);
 }
