@@ -1,8 +1,16 @@
-import str2hex from './str2hexArr.js';
+import convert from './convertData.js';
 
-const promise = str2hex.receiveStr('HOW');
+const promise = convert.receiveStr('HOW');
 
 promise
-    .then(str2hex.str2arr)
-    .then(str2hex.charArr2decArr)
-    .then(str2hex.decArr2hexArr)
+    // 위에서 파라미터로 넘겨준 문자열 → 16진수
+    .then(convert.str2arr)
+    .then(convert.charArr2decArr)
+    .then(convert.decArr2hexArr)
+
+    // ===여기서 16진수 수신, 화살표 rotate, 송수신정보 출력===
+
+    // 송수신정보로 받은 16진수 → 문자열
+    // 송수신정보 내용을 공백없이 배열로 만든 후 
+    .then(convert.hexArr2decArr)
+    .then(convert.decArr2str)
