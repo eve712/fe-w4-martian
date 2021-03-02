@@ -1,4 +1,8 @@
-const sentence = {
-    howalive: '48 4F 57 41 4C 49 56 45',
-    crops: '43 52 4F 50 53 3F'
-}
+import str2hex from './str2hex.js';
+
+const promise = str2hex.receiveStr('HOW');
+
+promise
+    .then(str2hex.str2arr)
+    .then(str2hex.char2dec)
+    .then(str2hex.dec2hex)
