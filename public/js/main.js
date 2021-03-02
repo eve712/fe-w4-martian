@@ -1,4 +1,4 @@
-import str2hex from './str2hex.js';
+import str2hex from './str2hexArr.js';
 
 const promise = str2hex.receiveStr('HOW');
 

@@ -1,4 +1,3 @@
-
 const receiveStr = str => new Promise((resolve, reject) => {resolve(str)});
 
 const str2arr = str => str.replace(' ', '').split('');
