@@ -1,5 +1,5 @@
 import * as convert from './convertData.js';
-import rotateArrow from './rotateArrow.js';
+import renderReception from './renderReception.js';
 
 const promise = convert.receiveStr('HOW');
 
@@ -8,8 +8,9 @@ promise
     .then(convert.str2arr)
     .then(convert.charArr2decArr)
     .then(convert.decArr2hexArr)
-
+    
     // ===여기서 16진수 수신, 화살표 rotate, 송수신정보 출력===
+    .then(renderReception)
 
     // 송수신정보로 받은 16진수 → 문자열
     // 송수신정보 내용을 공백없이 배열로 만든 후 
