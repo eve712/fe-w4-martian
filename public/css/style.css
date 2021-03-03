@@ -97,16 +97,19 @@ body {
 }
 
 .table__arrow {
+    /* 화살표를 정사각형 박스의 정중앙으로 맞춰야 회전했을 때 각도가 안 흐트러짐 */
     display: block;
-    width: 55px;
-    height: 50px;
+    box-sizing: border-box;
+    width: 70px;
+    height: 70px;
+    padding-top: 2px;
+
     position: absolute;
-    top: 220px;
-    left: 179px;
-    font-size: 4rem;
+    top: 210px;
+    left: 169px;
+    font-size: 5rem;
     color: rgb(245, 108, 53);
-    /* transform: rotate(); */
-    transition-duration: 400ms;
+    transition: transform 400ms;
 }
 
 /* ======== 입력창 ======== */
