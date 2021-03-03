@@ -131,6 +131,7 @@ body {
     margin: 10px 0;
     color: #333;
 }
+
 .input__txt {
     display: block;
     outline: none;
@@ -139,11 +140,20 @@ body {
     width: 300px;
     height: 35px;
 }
-.reception {
+.reception_box {
     box-sizing: border-box;
     padding: 10px 20px;
     color: #333;
 }
+.trans_result {
+    width: 300px;
+    padding-left: 20px;
+    margin-top: 20px;
+    color: #333;
+    font-size: 1.4rem;
+    color: rgb(245, 108, 53);
+}
+
 .input__btn {
     width: 120px;
     height: 33px;

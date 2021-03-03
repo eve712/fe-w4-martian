@@ -1,19 +1,20 @@
 import {hexArr2decArr, decArr2str}  from './convertData.js';
 
-const $translation = document.querySelector('.translation');
-const $receptionBox = document.querySelector('.reception');
+const $transBtn = document.querySelector('.trans_btn');
+const $receptionBox = document.querySelector('.reception_box');
+const $transResult = document.querySelector('.trans_result');
 
 const setTranslationEvt = () => {
-    $translation.addEventListener('click', hexTranslate);
+    $transBtn.addEventListener('click', hexTranslate);
 }
 
 // pipe 함수로 리팩토링 필요!!!!!!!!
 const hexTranslate = () => {
-    if($translation.classList.contains('inactive')) return;
+    if($transBtn.classList.contains('inactive')) return;
     const hexArr = $receptionBox.innerText.split(' ');
     const decArr = hexArr2decArr(hexArr)
     const str = decArr2str(decArr)
-    $receptionBox.innerText = str;
+    $transResult.innerText = str;
 }
 
 export default setTranslationEvt;
