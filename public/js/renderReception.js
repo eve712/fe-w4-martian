@@ -1,5 +1,5 @@
 import rotateArrow from './rotateArrow.js';
-import {$receptionBox, $transBtn, $txt} from './rotateArrow.js';
+import {$receptionBox, $transBtn, $txt} from './ref.js';
 
 const after1sec = () => new Promise((resolve) => setTimeout(() => resolve(), 1000)) 
 const after2sec = () => new Promise((resolve) => setTimeout(() => resolve(), 2000)) 
