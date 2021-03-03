@@ -1,17 +1,21 @@
-import {hexArr2decArr, decArr2str}  from './convertData.js';
 import * as dom from './ref.js';
+import { pipe } from './util.js';
+import {hexArr2decArr, decArr2str}  from './convertData.js';
+
 
 const setTranslationEvt = () => {
     dom.$transBtn.addEventListener('click', hexTranslate);
     dom.$transBtn.addEventListener('click', initContent);
 }
 
-// pipe 함수로 리팩토링 필요!!!!!!!!
+// pipe함수에 쓰일 함수들
+const getHexArr = () => dom.$receptionBox.innerText.split(' ');
+const getDecArr = hexArr => hexArr2decArr(hexArr);
+const getStr = decArr => decArr2str(decArr)
+
 const hexTranslate = () => {
     if(dom.$transBtn.classList.contains('inactive')) return;
-    const hexArr = dom.$receptionBox.innerText.split(' ');
-    const decArr = hexArr2decArr(hexArr)
-    const str = decArr2str(decArr)
+    const str = pipe(getHexArr, getDecArr, getStr)();
     dom.$transResult.innerText = str;
 }
 
