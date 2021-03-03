@@ -1,6 +1,6 @@
 import * as dom from './ref.js';
 import { pipe } from './util.js';
-import {hexArr2decArr, decArr2str}  from './convertData.js';
+import { hexArr2decArr, decArr2str }  from './convertData.js';
 
 
 const setTranslationEvt = () => {
