@@ -1,4 +1,5 @@
-import convert from './convertData.js';
+import * as convert from './convertData.js';
+import rotateArrow from './rotateArrow.js';
 
 const promise = convert.receiveStr('HOW');
 
@@ -14,3 +15,4 @@ promise
     // 송수신정보 내용을 공백없이 배열로 만든 후 
     .then(convert.hexArr2decArr)
     .then(convert.decArr2str)
+    .then(arr => console.log(arr));
