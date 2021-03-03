@@ -1,6 +1,7 @@
 import rotateArrow from './rotateArrow.js';
 
 const $receptionBox = document.querySelector('.reception');
+const $translation = document.querySelector('.translation');
 const $txt = {
     '0' : document.querySelector('.txt_0'),
     '1' : document.querySelector('.txt_1'),
@@ -33,9 +34,12 @@ const renderReception = async function (hexArr) {
         await after2sec();  // ======= 2초 쉬고
         render(curr, hex, false)
         curr = hex[1]
-        await after5sec();  // ======= 넘어가기 전 5초 쉬고
-        $txt[hex[1]].removeAttribute('style');
+        if (i < hexArr.length - 1) {
+            await after5sec();  // ======= 넘어가기 전 5초 쉬고
+            $txt[hex[1]].removeAttribute('style');
+        }
     }
+    $translation.classList.remove('inactive');
 }
 
 const render = (curr, hex, isFirst) => {

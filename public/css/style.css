@@ -155,3 +155,8 @@ body {
     color: #333;
     cursor: pointer;
 }
+.inactive {
+    background-color: #eee;
+    color: #ccc;
+    cursor: default;
+}
