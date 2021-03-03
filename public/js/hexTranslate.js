@@ -13,12 +13,17 @@ const getHexArr = () => dom.$receptionBox.innerText.split(' ');
 const getDecArr = hexArr => hexArr2decArr(hexArr);
 const getStr = decArr => decArr2str(decArr)
 
+// 16진수 해석해주는 이벤트 핸들러
 const hexTranslate = () => {
     if(dom.$transBtn.classList.contains('inactive')) return;
-    const str = pipe(getHexArr, getDecArr, getStr)();
-    dom.$transResult.innerText = str;
+    const result = pipe(
+        getHexArr, 
+        getDecArr, 
+        getStr)();
+    dom.$transResult.innerText = result;
 }
 
+// 화살표 방향, 글자색, 송수신정보, 버튼 초기화하는 이벤트 핸들러
 const initContent = () => {
     dom.$arrow.removeAttribute('style');
     const info =  dom.$receptionBox.innerText;
