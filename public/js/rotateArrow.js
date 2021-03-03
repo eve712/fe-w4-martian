@@ -1,4 +1,4 @@
-const $arrow = document.querySelector('.table__arrow');
+import { $arrow } from './ref.js';
 
 // getArrowAngle에서 각도를 받아와서 회전시키는 함수
 const rotateArrow = (_curr, _des) => {

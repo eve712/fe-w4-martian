@@ -1,45 +1,25 @@
 import rotateArrow from './rotateArrow.js';
+import {$receptionBox, $transBtn, $txt} from './rotateArrow.js';
 
-const $receptionBox = document.querySelector('.reception');
-const $translation = document.querySelector('.translation');
-const $txt = {
-    '0' : document.querySelector('.txt_0'),
-    '1' : document.querySelector('.txt_1'),
-    '2' : document.querySelector('.txt_2'),
-    '3' : document.querySelector('.txt_3'),
-    '4' : document.querySelector('.txt_4'),
-    '5' : document.querySelector('.txt_5'),
-    '6' : document.querySelector('.txt_6'),
-    '7' : document.querySelector('.txt_7'),
-    '8' : document.querySelector('.txt_8'),
-    '9' : document.querySelector('.txt_9'),
-    'A' : document.querySelector('.txt_A'),
-    'B' : document.querySelector('.txt_B'),
-    'C' : document.querySelector('.txt_C'),
-    'D' : document.querySelector('.txt_D'),
-    'E' : document.querySelector('.txt_E'),
-    'F' : document.querySelector('.txt_F')
-}
-
+const after1sec = () => new Promise((resolve) => setTimeout(() => resolve(), 1000)) 
 const after2sec = () => new Promise((resolve) => setTimeout(() => resolve(), 2000)) 
-const after5sec = () => new Promise((resolve) => setTimeout(() => resolve(), 5000)) 
 const after400ms = () => new Promise((resolve) => setTimeout(() => resolve(), 400)) 
 
 const renderReception = async function (hexArr) {
-    let curr = 4;
+    let curr = '4';
     for(let i = 0; i < hexArr.length; i++) {
         const hex = hexArr[i];
         render(curr, hex, true)
         curr = hex[0]
-        await after2sec();  // ======= 2초 쉬고
+        await after1sec();  // ======= 1초 쉬고
         render(curr, hex, false)
         curr = hex[1]
         if (i < hexArr.length - 1) {
-            await after5sec();  // ======= 넘어가기 전 5초 쉬고
-            $txt[hex[1]].removeAttribute('style');
+            await after2sec();  // ======= 넘어가기 전 2초 쉬고
+            $txt[curr].removeAttribute('style');
         }
     }
-    $translation.classList.remove('inactive');
+    $transBtn.classList.remove('inactive');
 }
 
 const render = (curr, hex, isFirst) => {

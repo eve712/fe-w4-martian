@@ -1,10 +1,8 @@
 import {hexArr2decArr, decArr2str}  from './convertData.js';
-
-const $transBtn = document.querySelector('.trans_btn');
-const $receptionBox = document.querySelector('.reception_box');
-const $transResult = document.querySelector('.trans_result');
+import {$transBtn, $receptionBox, $transResult} from './ref.js';
 
 const setTranslationEvt = () => {
+    $transBtn.addEventListener('click', hexTranslate);
     $transBtn.addEventListener('click', hexTranslate);
 }
 
@@ -15,6 +13,10 @@ const hexTranslate = () => {
     const decArr = hexArr2decArr(hexArr)
     const str = decArr2str(decArr)
     $transResult.innerText = str;
+}
+
+const initContent = () => {
+    
 }
 
 export default setTranslationEvt;
