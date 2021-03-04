@@ -10,18 +10,25 @@ const rotateArrow = next => {
 }
 
 const hexToDecimal = hex => parseInt(hex, 16);
+const getArrowAngle = next => pipe(getArrowStyle, getCurrAngle, getNextAngles, getDiffs, getRealAngle)(next)
+const rotate = angle => $arrow.style.transform = `rotate(${angle}deg)`;
 
-// ===== pipe 함수로 리팩토링 필요 ===== 
-// 화살표의 현재 위치와 다음 위치를 계산해서 빠른 방향의 각도를 알아내는 함수
-const getArrowAngle = next => {
-    const style = $arrow.getAttribute('style');
-    const currAngle = (style === null) ? 0 : style.slice(18, -5)
-    const [angle1, angle2] = [getAngle(next), getAngle(next) - 360];
+// ==================================
+const getArrowStyle = next => [$arrow.getAttribute('style'), next];
 
-    const [diff1, diff2] = [getDiff(currAngle, angle1), getDiff(currAngle, angle2)];
-    const realAngle = diff1 > diff2 ? angle2 : angle1;
-    return realAngle;
+const getCurrAngle = ([style, next]) => [(style === null) ? 0 : style.slice(18, -5), next]
+
+const getNextAngles = ([curr, next]) => {
+    const [next1, next2] = [getAngle(next), getAngle(next) - 360];
+    return {curr, next1, next2}
 }
+
+const getDiffs = ({curr, next1, next2}) => {
+    const [diff1, diff2] = [getDiff(curr, next1), getDiff(curr, next2)];
+    return {diff1, diff2, next1, next2}
+}
+
+const getRealAngle = ({diff1, diff2, next1, next2}) => diff1 > diff2 ? next2 : next1;
 
 const getDiff = (currAngle, nextAngle) => Math.abs(Math.abs(currAngle) - Math.abs(nextAngle));
 
@@ -30,7 +37,5 @@ const getAngle = num => {
     if(num < 4) num += 16;
     return oneAngle / 2 + (num - 4) * oneAngle
 }
-
-const rotate = angle => $arrow.style.transform = `rotate(${angle}deg)`;
 
 export default rotateArrow;

@@ -4,7 +4,7 @@ import { setTranslationEvt } from './hexTranslate.js';
 import setSendingMsgEvt from './sendData.js';
 
 // 파라미터 = 지구에서 화성에 송신할 문자열
-receiveStr('M')
+receiveStr('Mark')
     .then(str => strToHexArr(str))
     .then(renderReception)
 
