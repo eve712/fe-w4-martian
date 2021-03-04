@@ -1,9 +1,15 @@
-import { $sendingMsg, $sendBtn } from './ref.js';
+import { $sendingMsg, $sendBtn, $receptionBox } from './ref.js';
+import { pipe } from './util.js';
+import { strToHexArr } from './renderReception.js';
 
-$sendBtn.addEventListener('click', );
+const setSendingMsgEvt = () => {
+    $sendingMsg.addEventListener("keyup", printSendingHex);
+}
 
-const sendMsg = () => {
-    const msg = $sendingMsg.value;
-    if (msg === null) return;
-    
-};
+const getMsg = () => $sendingMsg.value;
+const getHexStr = hexArr => hexArr.join(' ');
+const printHexStr = str => $receptionBox.innerHTML = str;
+
+const printSendingHex = pipe(getMsg, strToHexArr, getHexStr, printHexStr);
+
+export default setSendingMsgEvt;
