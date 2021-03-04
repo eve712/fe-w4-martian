@@ -11,10 +11,7 @@ const setTranslationEvt = () => {
 // 16진수 해석해주는 이벤트 핸들러
 const hexTranslate = () => {
     if(dom.$transBtn.classList.contains('inactive')) return;
-    const result = pipe(
-        getHexArr, 
-        getDecArr, 
-        getStr)();
+    const result = pipe(getHexArr, getDecArr, getStr)();
     dom.$transResult.innerText = result;
 }
 
