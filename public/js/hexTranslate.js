@@ -23,6 +23,7 @@ const getDecArr = hexArr => hexArr2decArr(hexArr);
 const getStr = decArr => decArr2str(decArr)
 
 const initPrevRender = () => {
+    if(dom.$arrow.getAttribute('style') === null) return;
     dom.$arrow.removeAttribute('style');
     const info =  dom.$receptionBox.innerText;
     const lastChar =  info[info.length -1];
