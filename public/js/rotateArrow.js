@@ -18,17 +18,11 @@ const getArrowStyle = next => [$arrow.getAttribute('style'), next];
 
 const getCurrAngle = ([style, next]) => [(style === null) ? 0 : style.slice(18, -5), next]
 
-const getNextAngles = ([curr, next]) => {
-    const [next1, next2] = [getAngle(next), getAngle(next) - 360];
-    return {curr, next1, next2}
-}
+const getNextAngles = ([curr, next]) => [curr, getAngle(next), (getAngle(next) - 360)]
 
-const getDiffs = ({curr, next1, next2}) => {
-    const [diff1, diff2] = [getDiff(curr, next1), getDiff(curr, next2)];
-    return {diff1, diff2, next1, next2}
-}
+const getDiffs = ([curr, next1, next2]) => [getDiff(curr, next1), getDiff(curr, next2), next1, next2];
 
-const getRealAngle = ({diff1, diff2, next1, next2}) => diff1 > diff2 ? next2 : next1;
+const getRealAngle = ([diff1, diff2, next1, next2]) => diff1 > diff2 ? next2 : next1;
 
 const getDiff = (currAngle, nextAngle) => Math.abs(Math.abs(currAngle) - Math.abs(nextAngle));
 
