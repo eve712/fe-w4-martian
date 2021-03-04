@@ -4,6 +4,8 @@ const $arrow = $('.table__arrow');
 const $transBtn = $('.trans_btn');
 const $receptionBox = $('.reception_box');
 const $transResult = $('.trans_result');
+const $sendingMsg = $('.sending_msg');
+const $sendBtn = $('.send_btn');
 const $txt = {
     '0' : $('.txt_0'),
     '1' : $('.txt_1'),
@@ -28,5 +30,7 @@ export {
     $transBtn,
     $receptionBox,
     $transResult,
+    $sendingMsg,
+    $sendBtn,
     $txt
 }
