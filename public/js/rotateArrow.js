@@ -3,11 +3,13 @@ import { pipe } from './util.js';
 
 // 다음 16진수 받아와서, 10진수로 변환, 각도 구해서, 회전시키는 함수
 const rotateArrow = next => {
-    pipe(hex => parseInt(hex, 16),
+    pipe(hexToDecimal,
         getArrowAngle,
         rotate
     )(next)
 }
+
+const hexToDecimal = hex => parseInt(hex, 16);
 
 // ===== pipe 함수로 리팩토링 필요 ===== 
 // 화살표의 현재 위치와 다음 위치를 계산해서 빠른 방향의 각도를 알아내는 함수
