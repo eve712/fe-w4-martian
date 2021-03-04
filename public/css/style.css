@@ -97,7 +97,6 @@ body {
 }
 
 .table__arrow {
-
     /* 화살표를 정사각형 박스의 정중앙으로 맞춰야 회전했을 때 각도가 안 흐트러짐 */
     display: block;
     box-sizing: border-box;
@@ -133,21 +132,18 @@ body {
     color: #333;
 }
 .input__txt {
-    display: block;
+    box-sizing: border-box;
     outline: none;
     border: 1px solid #ccc;
     border-radius: 10px;
     width: 300px;
     height: 35px;
-}
-.reception_box {
-    box-sizing: border-box;
     padding: 10px 20px;
     color: #333;
 }
 .trans_result {
     width: 300px;
-    padding-left: 20px;
+    padding-left: 10px;
     margin-top: 20px;
     color: #333;
     font-size: 1.4rem;
