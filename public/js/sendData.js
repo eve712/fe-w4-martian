@@ -1,10 +1,12 @@
 import { $sendingMsg, $sendBtn, $receptionBox, $transResult } from './ref.js';
 import { pipe } from './util.js';
 import { strToHexArr, renderReception } from './renderReception.js';
+import { initPrevRender } from './hexTranslate.js';
 
 const setSendingMsgEvt = () => {
     $sendingMsg.addEventListener('keyup', printSendingHex);
-    $sendingMsg.addEventListener('keyup', clearTransResult);
+    $sendingMsg.addEventListener('keydown', clearTransResult);
+    $sendingMsg.addEventListener('keydown', initPrevRender);
     $sendBtn.addEventListener('click', renderSendingHex);
 }
 
