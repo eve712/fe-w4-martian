@@ -1,19 +1,12 @@
 import { pipe } from './util.js';
-import { receiveStr, str2arr, charArr2decArr, decArr2hexArr } from './convertData.js';
+import { str2arr, charArr2decArr, decArr2hexArr } from './convertData.js';
 import { $receptionBox, $transBtn, $txt } from './ref.js';
 import rotateArrow from './rotateArrow.js';
 
-// ---✘✘✘ 가장 큰 메인 함수 : 송신할 문자열 받아 렌더링 ✘✘✘---
-const sendMsgAndRender = str => {
-    receiveStr(str)
-        .then(str => pipe(
-            str2arr, 
-            charArr2decArr, 
-            decArr2hexArr)(str))
-        .then(renderReception)
-};
+// 문자열 → 16진수 배열
+const strToHexArr = pipe(str2arr, charArr2decArr, decArr2hexArr)
 
-// 전달 받은 16진수배열 → 화살표 돌리고, 송수신정보에 출력
+// 16진수 배열 → 화살표 회전 + 송수신정보에 출력
 const renderReception = async function (hexArr) {
     let curr = '4';
     for(let i = 0; i < hexArr.length; i++) {
@@ -48,4 +41,7 @@ const printInfo = async function (curr, isFirst) {
 }
 
 
-export default sendMsgAndRender;
+export {
+    strToHexArr,
+    renderReception
+}
