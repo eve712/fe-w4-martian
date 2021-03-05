@@ -8,7 +8,6 @@ const rotateArrow = next => {
         rotate
     )(next)
 }
-
 const hexToDecimal = hex => parseInt(hex, 16);
 const getArrowAngle = next => pipe(getArrowStyle, getCurrAngle, getNextAngles, getDiffs, getRealAngle)(next)
 const rotate = angle => $arrow.style.transform = `rotate(${angle}deg)`;
