@@ -1,16 +1,12 @@
-import { pipe } from './util.js';
-import {receiveStr, str2arr, charArr2decArr, decArr2hexArr} from './convertData.js';
-import renderReception from './renderReception.js';
-import setTranslationEvt from './hexTranslate.js';
+import { receiveStr } from './convertData.js';
+import { strToHexArr, renderReception} from './renderReception.js';
+import { setTranslationEvt } from './hexTranslate.js';
+import setSendingMsgEvt from './sendData.js';
 
-// 파라미터로 화성에 송신할 문자열 받아 프라미스 객체 생성해서 반환.
-const promise = receiveStr('OH!');
+// 파라미터 = 지구에서 화성에 송신할 문자열
+receiveStr('Mark')
+    .then(str => strToHexArr(str))
+    .then(renderReception)
 
 setTranslationEvt();
-
-promise
-    .then(str => pipe(
-        str2arr, 
-        charArr2decArr, 
-        decArr2hexArr)(str))
-    .then(renderReception)
+setSendingMsgEvt();

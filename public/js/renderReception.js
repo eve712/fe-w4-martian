@@ -1,9 +1,12 @@
+import { pipe } from './util.js';
+import { str2arr, charArr2decArr, decArr2hexArr } from './convertData.js';
 import { $receptionBox, $transBtn, $txt } from './ref.js';
 import rotateArrow from './rotateArrow.js';
 
-const afterMs = ms => new Promise((resolve) => setTimeout(() => resolve(), ms)) 
+// 문자열 → 16진수 배열
+const strToHexArr = pipe(str2arr, charArr2decArr, decArr2hexArr)
 
-// 전달 받은 16진수배열 → 화살표 돌리고, 송수신정보에 출력
+// 16진수 배열 → 화살표 회전 + 송수신정보에 출력
 const renderReception = async function (hexArr) {
     let curr = '4';
     for(let i = 0; i < hexArr.length; i++) {
@@ -21,6 +24,8 @@ const renderReception = async function (hexArr) {
     $transBtn.classList.remove('inactive');
 }
 
+const afterMs = ms => new Promise((resolve) => setTimeout(() => resolve(), ms)) 
+
 const render = (hex, isFirst) => {
     if(!isFirst) $txt[hex[0]].removeAttribute('style');
     const next = isFirst ? hex[0] : hex[1];
@@ -36,4 +41,7 @@ const printInfo = async function (curr, isFirst) {
 }
 
 
-export default renderReception;
+export {
+    strToHexArr,
+    renderReception
+}

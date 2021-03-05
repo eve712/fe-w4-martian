@@ -8,29 +8,31 @@ const setTranslationEvt = () => {
     dom.$transBtn.addEventListener('click', initContent);
 }
 
-// pipe함수에 쓰일 함수들
+// 16진수 해석해주는 이벤트 핸들러
+const hexTranslate = () => {
+    if(dom.$transBtn.classList.contains('inactive')) return;
+    const result = pipe(getHexArr, getDecArr, getStr)();
+    dom.$transResult.innerText = result;
+}
+
 const getHexArr = () => dom.$receptionBox.innerText.split(' ');
 const getDecArr = hexArr => hexArr2decArr(hexArr);
 const getStr = decArr => decArr2str(decArr)
 
-// 16진수 해석해주는 이벤트 핸들러
-const hexTranslate = () => {
-    if(dom.$transBtn.classList.contains('inactive')) return;
-    const result = pipe(
-        getHexArr, 
-        getDecArr, 
-        getStr)();
-    dom.$transResult.innerText = result;
-}
+const initPrevRender = () => {
+    if(dom.$arrow.getAttribute('style') === null) return;
 
-// 화살표 방향, 글자색, 송수신정보, 버튼 초기화하는 이벤트 핸들러
-const initContent = () => {
     dom.$arrow.removeAttribute('style');
     const info =  dom.$receptionBox.innerText;
     const lastChar =  info[info.length -1];
     dom.$txt[lastChar].removeAttribute('style');
-    dom.$receptionBox.innerText = '';
     dom.$transBtn.classList.add('inactive');
 }
+const initPrevHex = () => { dom.$receptionBox.innerText = '' }
 
-export default setTranslationEvt;
+const initContent = pipe(initPrevRender, initPrevHex);
+
+export {
+    setTranslationEvt,
+    initPrevRender
+}
